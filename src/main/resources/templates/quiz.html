@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align at the top */
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 600px;
+            overflow: auto; /* Allow scrolling inside */
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        p, label {
+            font-size: 16px;
+            color: #555;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .thank-you-message h2 {
+            color: #4CAF50;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 15px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Programming Quiz</h1>
+        <form id="quizForm">
+            <!-- Display User Details -->
+            <p><strong>Name:</strong> <span id="name"></span></p>
+            <p><strong>Roll Number:</strong> <span id="rollNumber"></span></p>
+            <p><strong>Department:</strong> <span id="department"></span></p>
+            <p><strong>Programming Language:</strong> <span id="programmingLanguage"></span></p>
+
+            <div>
+                <h2>Programming Questions</h2>
+                <div th:each="q, iterStat : ${questions}" class="question-container">
+                    <label class="question-text">
+                        Question [[${iterStat.index + 1}]]: 
+                        <span class="question" th:text="${q.question}"></span>
+                    </label>
+                    <br>
+                    <ul th:each="option : ${q.options}">
+                        <input type="radio" class="options" th:name="'question' + ${iterStat.index}" th:value="${option.key}" />
+                        <span th:text="${option.key} + ') ' + ${option.value}"></span>
+                    </ul>
+                    <input type="hidden" th:value="${q.answer}" class="answers">
+                    <input type="hidden" th:value="${q.program}" class="program">
+                </div>
+            </div>
+
+            <button type="submit">Submit Answer</button>
+        </form>
+
+        <div class="thank-you-message" id="thankYouMessage">
+            <h2>Thank You!</h2>
+            <p>Your response has been successfully submitted.</p>
+            <button id="onsubmit">Back to Home</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/js/design.js"></script>
+</body>
+</html>

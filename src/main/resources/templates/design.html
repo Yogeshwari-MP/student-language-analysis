@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Details Form</h1>
+        <form action="quizes" method="GET">
+            <label for="name">Name:</label>
+            <input type="text" id="student_name" name="student_name" placeholder="Enter your name" required>
+
+            <label for="rollNumber">Roll Number:</label>
+            <input type="text" id="student_rollnum" name="student_rollnum" placeholder="Enter your roll number" required>
+
+            <label for="department">Department:</label>
+            <input type="text" id="department_name" name="department_name" placeholder="Enter your department" required>
+
+            <label for="programmingLanguage">Interested Programming Language:</label>
+            <input type="text" id="prefered_language" name="prefered_language" placeholder="Enter your preferred programming language" required>
+
+            <button type="submit" >Submit</button>
+        </form>
+    </div>
+</body>
+<!--
+<script src="/js/design.js"></script>-->
+</html>
+
